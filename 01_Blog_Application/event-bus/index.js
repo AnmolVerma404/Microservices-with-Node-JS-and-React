@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
   res.send("This is Event-bus server");
 });
 
-app.post("/event", (req, res) => {
+app.post("/events", (req, res) => {
   const event = req.body;
 
   axios.post("http://localhost:4000/events", event);
