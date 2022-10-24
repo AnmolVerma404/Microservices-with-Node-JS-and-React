@@ -9,15 +9,22 @@ app.get("/", (req, res) => {
   res.send("This is Event-bus server");
 });
 
+const events = [];
+
 app.post("/events", (req, res) => {
   const event = req.body;
-
+  events.push(event);
+  console.log("Bus", events);
   axios.post("http://localhost:4000/events", event);
   axios.post("http://localhost:4001/events", event);
-  axios.post("http://localhost:4002/events", event);//Was showing an error and there was no port 4002
+  axios.post("http://localhost:4002/events", event); //Was showing an error and there was no port 4002
   axios.post("http://localhost:4003/events", event);
 
   res.send({ status: "OK" });
+});
+
+app.get("/events", (req, res) => {
+  res.send(events);
 });
 
 app.listen(PORT, () => {
