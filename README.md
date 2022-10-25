@@ -39,6 +39,11 @@
     - `docker kill <id>` will immediately quit/kill/stop/force stop the container
     - `docker exec -it <container id> <command>` by this you will be able to add a new command in pre existing container
     - `docker exec -it <container id> sh` to open a new shell window inside a container.
+    - Dockerfile :-
+      - Initially it was having three commands `FROM`, `RUN`, `CMD`
+      - `FROM` states a baseline of a Docker file, it is the necessary components for a container to begin the flow. It's the Docker image that we want to use as a base.
+      - `RUN` it is use to execute some commands while we are preparing our custome image.
+      - `CMD` it specifies what should be executed when our image is used to start a brand new container.
 - Kubernetes - It's a tool for running a bunch of different containers together
   - It is going to create these containers that are going to run our program for us, and it's going to handle communication or network requests between all these containers.
   - In simple words, it's a tool for simplifying communication between different containers/programs.
