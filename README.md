@@ -45,6 +45,7 @@
       - `RUN` it is use to execute some commands while we are preparing our custome image.
       - `CMD` it specifies what should be executed when our image is used to start a brand new container.
       - `COPY` As the files present in your directory is not present in the container/image, therefore you need to specify which files/folder are needed where.
+    - **Port** in which our service is listening/running is in container therefore we have to map it with a port in our local machine. For that we use `docker run -p <local machine PORT>:<container PORT> <id>`
 - Kubernetes - It's a tool for running a bunch of different containers together
   - It is going to create these containers that are going to run our program for us, and it's going to handle communication or network requests between all these containers.
   - In simple words, it's a tool for simplifying communication between different containers/programs.
