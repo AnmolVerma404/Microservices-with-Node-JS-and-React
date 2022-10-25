@@ -17,6 +17,10 @@
   - Container - It's like an *isolated computing environment*, it contains everything required to run one single program.
   - That's what is called a Docker Container
   - Eg:- Container for different services in an App like Posts, Comments, Moderation, Event-Bus, Query, etc.
+  - Docker makes it easy to run and install a software without worrying about it's setup of dependencies.
+  - Docker have and Image and a container.
+  - A Docker image is a file used to execute code in a Docker container
+    <img src="./Images/Docker_image_container.png">
 - Kubernetes - It's a tool for running a bunch of different containers together
   - It is going to create these containers that are going to run our program for us, and it's going to handle communication or network requests between all these containers.
   - In simple words, it's a tool for simplifying communication between different containers/programs.
