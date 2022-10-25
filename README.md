@@ -28,8 +28,17 @@
   - For viewing current running container
     - For running a container use `docker run busybox ping google.com`
     <img src="./Images/Container_running.png" height="150px">
+    <br>
     - `docker ps`
     <img src="./Images/Docker_ps.png" height="150px" >
+  - `docker ps --all` will show all the container ever created and run.
+  - (`docker run`) = (`docker create`) + (`docker start -a`)
+  - `docker system prune` is the command to delete all the container, image, and cache present in your local machine.
+  - To stop the docker container we have :-
+    - `docker stop <id>` will give some time, to save/easily quit the container. If it take more than 10 sec `docker kill <id>` will automatically execute
+    - `docker kill <id>` will immediately quit/kill/stop/force stop the container
+    - `docker exec -it <container id> <command>` by this you will be able to add a new command in pre existing container
+    - `docker exec -it <container id> sh` to open a new shell window inside a container.
 - Kubernetes - It's a tool for running a bunch of different containers together
   - It is going to create these containers that are going to run our program for us, and it's going to handle communication or network requests between all these containers.
   - In simple words, it's a tool for simplifying communication between different containers/programs.
