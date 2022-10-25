@@ -20,7 +20,16 @@
   - Docker makes it easy to run and install a software without worrying about it's setup of dependencies.
   - Docker have and Image and a container.
   - A Docker image is a file used to execute code in a Docker container
-    <img src="./Images/Docker_image_container.png">
+    <img src="./Images/Docker_image_container.png" height="150px">
+  - In simple words a image is like a *repository* which we can clone/download/cache/use in our local machine from **Docker Hub**(Like *GitHub*).
+  - The command to do this is
+    - `docker run <image name> <command>`
+    - The `command` is a action, which we can justify after the image name. It should be present in the container to run successfully.
+  - For viewing current running container
+    - For running a container use `docker run busybox ping google.com`
+    <img src="./Images/Container_running.png" height="150px">
+    - `docker ps`
+    <img src="./Images/Docker_ps.png" height="150px" >
 - Kubernetes - It's a tool for running a bunch of different containers together
   - It is going to create these containers that are going to run our program for us, and it's going to handle communication or network requests between all these containers.
   - In simple words, it's a tool for simplifying communication between different containers/programs.
