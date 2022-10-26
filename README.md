@@ -49,3 +49,12 @@
 - Kubernetes - It's a tool for running a bunch of different containers together
   - It is going to create these containers that are going to run our program for us, and it's going to handle communication or network requests between all these containers.
   - In simple words, it's a tool for simplifying communication between different containers/programs.
+  - `kubectl version` for checking Kubernetes version
+  - **Kubernetes Cluster** - A Collection of nodes + a master to manage them
+  - **Node** - A virtual machine that will run our container
+  - **Pod** - A Pod can run multiple container, more or less a running container.
+  - **Deployment** - It monitors a set of Pods, and make sure that they are running and restarts them if they crash.
+  - **Service** - Provides a easy to remember URL to access a running container.
+  - **yaml** is the language used to write and store Kubernetes commands, and **k8s** is the folder convention to store such kubernetes config files.
+  - To run the config file use `kubectl apply -f <file name with ext(yaml)>`
+  - To inspect and get a list of all the running Pods use `kubectl gets pods`
