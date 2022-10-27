@@ -60,6 +60,11 @@
   - To inspect and get a list of all the running Pods use `kubectl get pods`
   - `kubectl exec -it <pod name> [cmd]` Execute the given command in a running pod
   - `kubectl logs <pod name>` print out logs from the given pod
-  - `kubectl delete pad <pod name>` deletes the given pod
+  - `kubectl delete pod <pod name>` deletes the given pod
   - `kubectl apply -f <config file name>` tells kubernetes to process the config
-  - `kubectl describe pad <pod name>` print out some information about the running pod
+  - `kubectl describe pod <pod name>` print out some information about the running pod
+  - **Deployments** commands - 
+    - `kubectl get deployments` to get list of all current running deployment
+    - `kubectl describe deployments <depl name>` to print out details about a specific deployment
+    - `kubectl apply -f <config file name>` to create a deploynment out of a config file
+    - `kubectl delete deploynment <depl name>`

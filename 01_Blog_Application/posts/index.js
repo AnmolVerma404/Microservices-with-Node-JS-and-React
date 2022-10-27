@@ -44,5 +44,6 @@ app.post("/events", (req, res) => {
 });
 
 app.listen(PORT, () => {
+  console.log('v20');
   console.log(`Running live on: http://localhost:${PORT}`);
 });
