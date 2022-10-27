@@ -57,7 +57,7 @@
   - **Service** - Provides a easy to remember URL to access a running container.
   - **yaml** is the language used to write and store Kubernetes commands, and **k8s** is the folder convention to store such kubernetes config files.
   - To run the config file use `kubectl apply -f <file name with ext(yaml)>`
-  - To inspect and get a list of all the running Pods use `kubectl gets pods`
+  - To inspect and get a list of all the running Pods use `kubectl get pods`
   - `kubectl exec -it <pod name> [cmd]` Execute the given command in a running pod
   - `kubectl logs <pod name>` print out logs from the given pod
   - `kubectl delete pad <pod name>` deletes the given pod
