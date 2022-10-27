@@ -58,3 +58,8 @@
   - **yaml** is the language used to write and store Kubernetes commands, and **k8s** is the folder convention to store such kubernetes config files.
   - To run the config file use `kubectl apply -f <file name with ext(yaml)>`
   - To inspect and get a list of all the running Pods use `kubectl gets pods`
+  - `kubectl exec -it <pod name> [cmd]` Execute the given command in a running pod
+  - `kubectl logs <pod name>` print out logs from the given pod
+  - `kubectl delete pad <pod name>` deletes the given pod
+  - `kubectl apply -f <config file name>` tells kubernetes to process the config
+  - `kubectl describe pad <pod name>` print out some information about the running pod
