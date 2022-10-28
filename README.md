@@ -28,7 +28,6 @@
   - For viewing current running container
     - For running a container use `docker run busybox ping google.com`
     <img src="./Images/Container_running.png" height="150px">
-    <br>
     - `docker ps`
     <img src="./Images/Docker_ps.png" height="150px" >
   - `docker ps --all` will show all the container ever created and run.
@@ -75,3 +74,5 @@
     - Node Port - Make pod accessable outside the cluster
     - Load Balancer - Same as Node, but this way is more used *(IMP)*
     - External Name - Redirects as in in-cluster req to CNAME url(not imp)
+  - After defining all the YAML file for service, deploy them in Docker Hub via Kubernetes, then you will be able to use and map ports, and get/post request on your local machine.s
+  - Via these steps every service are independent i.e. microservice and even if they went down, due to deployment properties of k8s they will immediately restart on there own.
