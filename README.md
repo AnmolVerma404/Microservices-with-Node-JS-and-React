@@ -33,6 +33,8 @@
   - `docker ps --all` will show all the container ever created and run.
   - (`docker run`) = (`docker create`) + (`docker start -a`)
   - `docker system prune` is the command to delete all the container, image, and cache present in your local machine.
+  - After updating the code use the command `docker build -t <user id>/<image name> .` to rebuild the image and then push it in the docker hub.
+  - To push the image in Docker hub use `docker push <user name/id>/<image name>`
   - To stop the docker container we have :-
     - `docker stop <id>` will give some time, to save/easily quit the container. If it take more than 10 sec `docker kill <id>` will automatically execute
     - `docker kill <id>` will immediately quit/kill/stop/force stop the container
@@ -68,7 +70,7 @@
     - `kubectl apply -f <config file name>` to create a deploynment out of a config file
     - `kubectl delete deploynment <depl name>`
   - To push the image in Docker hub use `docker push <user name/id>/<image name>`
-  - To restart a pad after pushing(not necessary) use `kubectl rollout restart deployment <deployment name>`
+  - To restart a pod after pushing(*necessary*) use `kubectl rollout restart deployment <deployment name>`
   - Type of **Service** in Kubernetes :-
     - Cluster IP - URL to access a pod, only b/w pods *(IMP)*
     - Node Port - Make pod accessable outside the cluster
