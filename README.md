@@ -80,4 +80,5 @@
   1. **Build** **image** via Dockerfile 
   2. **Push** them on Docker Hub
   3. Create a **deployment** and **clusterip service** for **each** Microservices
-  4. **Update** the **links** in the Services.
+  4. **Apply** all the config file
+  5. **Update** the **links** in the Services.
