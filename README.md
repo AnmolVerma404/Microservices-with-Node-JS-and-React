@@ -68,3 +68,10 @@
     - `kubectl describe deployments <depl name>` to print out details about a specific deployment
     - `kubectl apply -f <config file name>` to create a deploynment out of a config file
     - `kubectl delete deploynment <depl name>`
+  - To push the image in Docker hub use `docker push <user name/id>/<image name>`
+  - To restart a pad after pushing(not necessary) use `kubectl rollout restart deployment <deployment name>`
+  - Type of **Service** in Kubernetes :-
+    - Cluster IP - URL to access a pod, only b/w pods *(IMP)*
+    - Node Port - Make pod accessable outside the cluster
+    - Load Balancer - Same as Node, but this way is more used *(IMP)*
+    - External Name - Redirects as in in-cluster req to CNAME url(not imp)
