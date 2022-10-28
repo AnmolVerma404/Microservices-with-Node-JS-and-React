@@ -76,3 +76,8 @@
     - External Name - Redirects as in in-cluster req to CNAME url(not imp)
   - After defining all the YAML file for service, deploy them in Docker Hub via Kubernetes, then you will be able to use and map ports, and get/post request on your local machine.s
   - Via these steps every service are independent i.e. microservice and even if they went down, due to deployment properties of k8s they will immediately restart on there own.
+- In short steps are :-
+  1. **Build** **image** via Dockerfile 
+  2. **Push** them on Docker Hub
+  3. Create a **deployment** and **clusterip service** for **each** Microservices
+  4. **Update** the **links** in the Services.
