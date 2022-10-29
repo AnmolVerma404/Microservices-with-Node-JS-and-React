@@ -84,3 +84,4 @@
   3. Create a **deployment** and **clusterip service** for **each** Microservices
   4. **Apply** all the config file
   5. **Update** the **links** in the Services.
+- For react app to make req and res from services, we need to make a ingress service. And for locally, add a host which we can alter in OS setting.
