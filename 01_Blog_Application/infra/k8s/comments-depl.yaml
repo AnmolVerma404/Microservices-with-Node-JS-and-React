@@ -14,14 +14,13 @@ spec:
     spec:
       containers:
         - name: comments
-          image: anmolverma404/comments:latest
+          image: cygnetops/comments-84
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: comments-srv
 spec:
-  type: ClusterIP # This service is default, therefore no need of mentioning it
   selector:
     app: comments
   ports:

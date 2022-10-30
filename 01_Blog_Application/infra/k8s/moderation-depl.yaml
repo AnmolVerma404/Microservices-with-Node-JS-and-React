@@ -14,14 +14,13 @@ spec:
     spec:
       containers:
         - name: moderation
-          image: anmolverma404/moderation:latest
+          image: cygnetops/moderation-84
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: moderation-srv
 spec:
-  type: ClusterIP # This service is default, therefore no need of mentioning it
   selector:
     app: moderation
   ports:
