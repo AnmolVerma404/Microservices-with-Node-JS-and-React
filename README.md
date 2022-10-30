@@ -85,3 +85,4 @@
   4. **Apply** all the config file
   5. **Update** the **links** in the Services.
 - For react app to make req and res from services, we need to make a ingress service. And for locally, add a host which we can alter in OS setting.
+- **Skaffold** is a service more like nodemon for kubernetes, it solve many time taking steps and automate applying, pushing, and redeploying of cluster. You just need to have a proper *skaffold.yaml* file with it's command in it, inside your project directory and run the command `skaffold dev` to start the server. It will check the file for any changes you tagged inside skaffold.yaml congig file.
