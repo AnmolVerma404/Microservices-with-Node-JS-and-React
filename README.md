@@ -86,3 +86,10 @@
   5. **Update** the **links** in the Services.
 - For react app to make req and res from services, we need to make a ingress service. And for locally, add a host which we can alter in OS setting.
 - **Skaffold** is a service more like nodemon for kubernetes, it solve many time taking steps and automate applying, pushing, and redeploying of cluster. You just need to have a proper *skaffold.yaml* file with it's command in it, inside your project directory and run the command `skaffold dev` to start the server. It will check the file for any changes you tagged inside skaffold.yaml congig file.
+- **TypeScript** is a programming language maintained by Microsoft, it adds optional static typing to javascript. It is designed for the development of large scale application with javascript. 
+  - After writing installing TypeScript and writting code in `.ts` file, run `tsc <file name>.ts` to compile TS code and convert it into JS code.
+  - Why need of TS?
+    - In JS we can't detect error during development session, it can only be detected after building/logging the code.
+    - By Error I mean, typo and Object name error which JS return *undefined*.
+    - In TS we can solve one of this issue by using *interface*.
+    - **Interface** in TS is like defining how our object will look like i.e. it's structure and data-type, it's more like defining schema in moongose. And after getting the file from fetch/anywhere we can write `as <structure name>`, this will check for any typos and wrong data type.
