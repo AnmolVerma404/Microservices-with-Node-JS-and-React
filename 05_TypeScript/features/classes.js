@@ -14,29 +14,37 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var Vehicle = /** @class */ (function () {
-    function Vehicle() {
+    function Vehicle(color) {
+        this.color = color;
     }
-    Vehicle.prototype.drive = function () {
-        console.log("chugga chugga");
-    };
     Vehicle.prototype.honk = function () {
         console.log("beep");
     };
     return Vehicle;
 }());
+var vehicle = new Vehicle("Red");
+console.log(vehicle.color);
 var Car = /** @class */ (function (_super) {
     __extends(Car, _super);
-    function Car() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Car(wheels, color) {
+        var _this = _super.call(this, color) || this;
+        _this.wheels = wheels;
+        return _this;
     }
     Car.prototype.drive = function () {
-        console.log('vroom');
+        console.log("vroom");
+    };
+    Car.prototype.startDrivingProcess = function () {
+        //Public by default
+        this.drive();
+        this.honk();
     };
     return Car;
 }(Vehicle));
 // const vehicle = new Vehicle();
 // vehicle.drive();
 // vehicle.honk();
-var car = new Car();
-car.drive();
-car.honk();
+var car = new Car(5, "Orange");
+console.log(car.color);
+console.log(car.wheels);
+car.startDrivingProcess();
