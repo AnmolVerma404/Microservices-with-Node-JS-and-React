@@ -5,10 +5,10 @@ const PORT = 3000;
 const app = express();
 app.use(json());
 
-app.get('/',(req,res)=>{
-    res.send('Hello there!');
+app.get('/api/users/currentuser',(req,res)=>{
+    res.send('Hi there!');
 })
 
 app.listen(PORT,()=>{
-    console.log(`App is listining on http://localhost:${PORT}`);
+    console.log(`App is listining!!! on http://localhost:${PORT}`);
 })
