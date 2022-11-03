@@ -1,14 +1,20 @@
-import express from 'express';
-import {json} from 'body-parser';
+import express from "express";
+import { json } from "body-parser";
+
+import { currentUserRouter } from "./routes/current-user";
+import { signinRouter } from "./routes/signin";
+import { signoutRouter } from "./routes/signout";
+import { signupRouter } from "./routes/signup";
 
 const PORT = 3000;
 const app = express();
 app.use(json());
 
-app.get('/api/users/currentuser',(req,res)=>{
-    res.send('Hi there!');
-})
+app.use(currentUserRouter);
+app.use(signinRouter);
+app.use(signoutRouter);
+app.use(signupRouter);
 
-app.listen(PORT,()=>{
-    console.log(`App is listining!!! on http://localhost:${PORT}`);
-})
+app.listen(PORT, () => {
+  console.log(`App is listining!!! on http://localhost:${PORT}`);
+});
