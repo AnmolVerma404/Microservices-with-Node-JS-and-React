@@ -14,7 +14,7 @@ router.get(
       .isLength({ min: 4, max: 20 })
       .withMessage("Password must be between 4 and 20 character"!),
   ],
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const error = validationResult(req);
     if (!error.isEmpty()) {
       throw new RequestValidationError(error.array());
