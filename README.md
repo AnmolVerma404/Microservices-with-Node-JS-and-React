@@ -93,3 +93,4 @@
     - By Error I mean, typo and Object name error which JS return *undefined*.
     - In TS we can solve one of this issue by using *interface*.
     - **Interface** in TS is like defining how our object will look like i.e. it's structure and data-type, it's more like defining schema in moongose. And after getting the file from fetch/anywhere we can write `as <structure name>`, this will check for any typos and wrong data type.
+  - A good way to throw a error is using Abstract classes, and checking if the current incoming object have same properties as the class, if it is them you throw custom error. No no need to handle millions of cases!.
