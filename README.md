@@ -94,3 +94,5 @@
     - In TS we can solve one of this issue by using *interface*.
     - **Interface** in TS is like defining how our object will look like i.e. it's structure and data-type, it's more like defining schema in moongose. And after getting the file from fetch/anywhere we can write `as <structure name>`, this will check for any typos and wrong data type.
   - A good way to throw a error is using Abstract classes, and checking if the current incoming object have same properties as the class, if it is them you throw custom error. No no need to handle millions of cases!.
+- How to use MongoDB with Typescript?
+  - As MDB file that contain schema have properties like `String` whereas TS have `string` not onyl what but, when creating a new instance of that peoperty TS dosen't bother to detect error in our code, it is one of the reason we need to create a new function which will return a new instance of mongoDB schema by passing through a argument which is an interface and contain all the parameters in TS so that error handling can be done. Also then we export both schema and TS function to creat a instance of that schema.

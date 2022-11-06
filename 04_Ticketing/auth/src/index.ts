@@ -1,6 +1,7 @@
 import express from "express";
-import 'express-async-errors';
+import "express-async-errors";
 import { json } from "body-parser";
+import mongoose from "mongoose";
 
 import { currentUserRouter } from "./routes/current-user";
 import { signinRouter } from "./routes/signin";
@@ -24,6 +25,15 @@ app.all("*", async () => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`App is listining!!! on http://localhost:${PORT}`);
-});
+const start = async () => {
+  try {
+    await mongoose.connect("mongodb://auth-mongo-srv:27017");
+  } catch (error) {
+    console.log(error);
+  }
+  app.listen(PORT, () => {
+    console.log(`App is listining!!! on http://localhost:${PORT}`);
+  });
+};
+
+start();
