@@ -96,3 +96,9 @@
   - A good way to throw a error is using Abstract classes, and checking if the current incoming object have same properties as the class, if it is them you throw custom error. No no need to handle millions of cases!.
 - How to use MongoDB with Typescript?
   - As MDB file that contain schema have properties like `String` whereas TS have `string` not onyl what but, when creating a new instance of that peoperty TS dosen't bother to detect error in our code, it is one of the reason we need to create a new function which will return a new instance of mongoDB schema by passing through a argument which is an interface and contain all the parameters in TS so that error handling can be done. Also then we export both schema and TS function to creat a instance of that schema.
+- Difference between Cookies and Json Web Tokens?
+  - First of all why, for authantication the used if they are logged in or not, there are 2 ways to do so.
+    1. Cookies Based Approach
+    2. Json Web Tokens(JWT)
+  - Cookies are small pieces of text sent to your browser, that help browser to remember information about your visit.
+  - JWT are a compact and self-contained way for securely transmitting information between parties as a JSON object
