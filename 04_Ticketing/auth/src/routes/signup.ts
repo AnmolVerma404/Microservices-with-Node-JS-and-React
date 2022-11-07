@@ -29,8 +29,11 @@ router.get(
     }
     const user = User.build({ email, password });
     await user.save();
-
-    const userJwt = jwt.sign({ id: user.id, email: user.email }, "asdf");
+    //As cookies are allowed in index.ts
+    //This userJWT will allow us to store cookies but first sign them using JWT, so that they are manipulated it will result error.
+    //"asdf" is a imp key to store it in env and use in different pods, we can create a secret in kubernetes cluster using - 
+    // kubectl create secret generic jwt-seceret --from-literal=JWT_KEY=asdf
+    const userJwt = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_KEY!);
     req.session = {
       jwt: userJwt,
     };

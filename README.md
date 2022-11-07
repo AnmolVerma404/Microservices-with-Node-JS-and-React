@@ -102,3 +102,4 @@
     2. Json Web Tokens(JWT)
   - Cookies are small pieces of text sent to your browser, that help browser to remember information about your visit.
   - JWT are a compact and self-contained way for securely transmitting information between parties as a JSON object
+  - Therefore with cookies we will send the information around and with JWT we will secure it.
