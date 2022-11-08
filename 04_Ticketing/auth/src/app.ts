@@ -17,7 +17,7 @@ app.use(json());
 app.use(//This will allow us to use cookies
   cookieSession({
     signed: false,
-    secure: true,
+    secure: process.env.NODE_ENV!=='test',
   })
 );
 
