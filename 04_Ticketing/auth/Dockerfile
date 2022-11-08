@@ -2,7 +2,8 @@ FROM node:alpine
 
 WORKDIR /app
 COPY package.json .
-RUN npm install
+# Only Prod will make sure to install only production dependencies not --save-dev
+RUN npm install --only=prod
 COPY . .
 
 CMD [ "npm","start" ]

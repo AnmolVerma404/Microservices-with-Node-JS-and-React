@@ -103,3 +103,7 @@
   - Cookies are small pieces of text sent to your browser, that help browser to remember information about your visit.
   - JWT are a compact and self-contained way for securely transmitting information between parties as a JSON object
   - Therefore with cookies we will send the information around and with JWT we will secure it.
+- **Testing** in Microservices
+  - A single piece of code that is going throught testing is known as Unit Testing.
+  - So how does actually testing works? How do we automate them? How do we make request, create response? How different Microservices interect with each other during testing? Let's answer them and more!!!
+  - npm i --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server
