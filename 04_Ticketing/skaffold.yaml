@@ -1,4 +1,4 @@
-apiVersion: skaffold/v3
+apiVersion: skaffold/v2alpha3
 kind: Config
 manifests:
   rawYaml:
@@ -7,11 +7,11 @@ build:
   local:
     push: false
   artifacts:
-    - image: anmolverma404/auth
+    - image: cygnetops/auth
       context: auth
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts' 
-            dest: .   
+          - src: "src/**/*.ts"
+            dest: .
