@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth-mongo # This is how the deployment is gona find about the POD
+      app: auth-mongo
   template:
     metadata:
       labels:
-        app: auth-mongo-depl # This is the POD
+        app: auth-mongo
     spec:
       containers:
-      - name: auth-mongo
-        image: mongo
+        - name: auth-mongo
+          image: mongo
 ---
 apiVersion: v1
 kind: Service
@@ -24,7 +24,7 @@ spec:
   selector:
     app: auth-mongo
   ports:
-  - name: db
-    protocol: TCP
-    port: 27017
-    targetPort: 27017
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
