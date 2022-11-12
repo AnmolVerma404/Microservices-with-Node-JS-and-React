@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3001;
+const PORT = 5001;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -13,16 +13,18 @@ const data: { text: string } = {
   text: "",
 };
 
-app.get("/", (req, res) => {
-  res.send(data.text);
+app.get("/posttext", (req, res) => {
+  res.send("This is Post Text Service");
 });
 
-app.post("/", async (req, res) => {
-  const { text }: { text: string } = req.body;
-  data.text = text;
-
-  // const text = await axios.get(`http://localhost:5001/posttext`);
-  res.status(201).send(text);
+app.post("/posttext", async (req, res) => {
+  data.text = req.body.text;
+  await axios
+    .post("http://localhost:3001/", { text: data.text })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  res.status(201).send(`Text Update to ${data.text}`);
 });
 
 app.listen(PORT, () => {
