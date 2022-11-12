@@ -9,7 +9,7 @@ const clientConfig = {
 
 const client = new Client(clientConfig);
 client.connect();
-//ALl of these service follow common auth pattern of generating a toking as the Ticketing App
+
 exports.createUser = function createUser(call, cb) {
   const { username, email, password } = call.request.user;
 

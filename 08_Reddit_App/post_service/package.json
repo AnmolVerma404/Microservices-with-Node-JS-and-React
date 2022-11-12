@@ -15,5 +15,8 @@
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.6.5"
   }
 }

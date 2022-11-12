@@ -1,0 +1,16 @@
+{
+  "name": "08_reddit_app",
+  "version": "1.0.0",
+  "description": "- **Proto**\r     - Also Known as Protocol Buffers Protocol\r     - Buffers is a free and open-source cross-platform data format used to serialize structured data. It is useful in developing programs to communicate with each other over a network or for storing data.\r - GRPC \r     - GRPC stand for Google Remote Procedure Call\r     - gRPC is a cross-platform open source high performance Remote Procedure Call framework. gRPC was initially created by Google, which has used a single general-purpose RPC infrastructure called Stubby to connect the **large number of microservices** running within and across its data centers for over a decade.",
+  "main": "index.js",
+  "scripts": {
+    "gateway": "cd gateway && npm i",
+    "post_service": "cd post_service && npm i",
+    "subreddit_service": "cd subreddit_service && npm i",
+    "user_service": "cd user_service && npm i",
+    "install_ALL": "npm run gateway && npm run post_service && npm run subreddit_service && npm run user_service"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

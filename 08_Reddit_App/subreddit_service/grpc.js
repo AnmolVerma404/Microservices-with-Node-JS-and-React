@@ -4,7 +4,7 @@ const server = new grpc.Server();
 
 exports.startGrpcServer = function () {
   server.bindAsync(
-    "127.0.0.1:50050",
+    "127.0.0.1:50052",
     grpc.ServerCredentials.createInsecure(),
     (error, port) => {
       if (error) console.error(error);

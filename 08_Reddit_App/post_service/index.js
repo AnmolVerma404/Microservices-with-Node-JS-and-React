@@ -1,8 +1,14 @@
 const { startGrpcServer, getGrpcServer } = require("./grpc");
 const protoLoader = require("@grpc/proto-loader");
 const grpc = require("@grpc/grpc-js");
-const PROTO_PATH = __dirname + "/protos/user.proto";
-const { createUser, createToken, isAuthenticated, getUser } = require("./user");
+const PROTO_PATH = __dirname + "/protos/post.proto";
+const {
+  createPost,
+  getPost,
+  updatePost,
+  likePost,
+  commentPost,
+} = require("./post");
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
@@ -11,14 +17,15 @@ const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   oneofs: true,
 });
 
-const user_proto = grpc.loadPackageDefinition(packageDefinition);
+const post_proto = grpc.loadPackageDefinition(packageDefinition);
 
 startGrpcServer();
 const server = getGrpcServer();
 
-server.addService(user_proto.UserService.service, {
-  createUser,
-  createToken,
-  isAuthenticated,
-  getUser,
+server.addService(post_proto.PostService.service, {
+  createPost,
+  getPost,
+  updatePost,
+  likePost,
+  commentPost,
 });
