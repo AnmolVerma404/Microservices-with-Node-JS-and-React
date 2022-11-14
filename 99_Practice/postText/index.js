@@ -20,7 +20,7 @@ app.get("/posttext", (req, res) => {
 app.post("/posttext", async (req, res) => {
   data.text = req.body.text;
   await axios
-    .post("http://client-srv:3001/", { text: data.text })
+    .post("http://posttext.com/", { text: data.text })
     .catch((err) => {
       console.log(err.message);
     });

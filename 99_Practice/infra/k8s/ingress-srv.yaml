@@ -18,3 +18,10 @@ spec:
             name: posttext-clusterip-srv
             port: 
               number: 5001
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: client-srv
+            port: 
+              number: 3001
