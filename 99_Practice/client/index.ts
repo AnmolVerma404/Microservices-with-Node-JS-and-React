@@ -1,7 +1,7 @@
 import express, { json } from "express";
 import axios from "axios";
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import bodyParser from "body-parser";
+import cors from "cors";
 
 const app = express();
 const PORT = 3001;

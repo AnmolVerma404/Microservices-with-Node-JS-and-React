@@ -9,7 +9,7 @@ const PORT = 5001;
 app.use(bodyParser.json());
 app.use(cors());
 
-const data: { text: string } = {
+const data = {
   text: "",
 };
 
