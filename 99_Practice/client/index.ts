@@ -20,7 +20,8 @@ app.get("/", (req, res) => {
 app.post("/", async (req, res) => {
   const { text }: { text: string } = req.body;
   data.text = text;
-
+  console.log("receiving data",text);
+  
   // const text = await axios.get(`http://localhost:5001/posttext`);
   res.status(201).send(text);
 });

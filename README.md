@@ -24,6 +24,7 @@
   - In simple words a image is like a *repository* which we can clone/download/cache/use in our local machine from **Docker Hub**(Like *GitHub*).
   - The command to do this is
     - `docker run <image name> <command>`
+    - **Remember if you have same name image already present in docker hub under your name, rebuild the image to update the contant, or change the name**
     - The `command` is a action, which we can justify after the image name. It should be present in the container to run successfully.
   - For viewing current running container
     - For running a container use `docker run busybox ping google.com`
