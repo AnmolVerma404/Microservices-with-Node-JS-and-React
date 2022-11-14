@@ -1,20 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posttext-depl
+  name: client-depl
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      app: posttext
+      app: client
   template:
     metadata:
       labels:
-        app: posttext
+        app: client
     spec:
       containers:
-      - name: posttext
-        image: anmolverma404/posttext
+      - name: client
+        image: anmolverma404/client
         resources:
           limits:
             memory: "128Mi"
@@ -23,12 +22,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: posttext-clusterip-srv
+  name: client-srv
 spec:
   selector:
-    app: posttext
+    app: client
   ports:
-  - name: posttext
+  - name: client
     protocol: TCP
-    port: 5001
-    targetPort: 5001
+    port: 3001
+    targetPort: 3001
