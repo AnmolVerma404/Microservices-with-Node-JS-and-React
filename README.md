@@ -77,6 +77,7 @@
     - Node Port - Make pod accessable outside the cluster
     - Load Balancer - Same as Node, but this way is more used *(IMP)*
     - External Name - Redirects as in in-cluster req to CNAME url(not imp)
+    - **Simply**, a **Node Port** will take a request from user that port will direct to a **Load Balancer** like **ingress-nginx** that will redirect all the incomming request to different/correct **Cluster IP** that will be service which is used for connecting different Microservices in our App.
   - After defining all the YAML file for service, deploy them in Docker Hub via Kubernetes, then you will be able to use and map ports, and get/post request on your local machine.s
   - Via these steps every service are independent i.e. microservice and even if they went down, due to deployment properties of k8s they will immediately restart on there own.
 - In short steps are :-

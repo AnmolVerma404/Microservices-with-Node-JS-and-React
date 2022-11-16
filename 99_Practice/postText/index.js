@@ -14,12 +14,13 @@ const data = {
 };
 
 app.get("/posttext", (req, res) => {
-  res.send("This is Post Text Service");
+  res.send("This is Post Text Service!!!");
 });
 
-app.post("/posttext", async (req, res) => {
+app.post("/posttext",  (req, res) => {
   data.text = req.body.text;
-  await axios
+  console.log("Posttext",data.text);
+  axios
     .post("http://posttext.com/", { text: data.text })
     .catch((err) => {
       console.log(err.message);
