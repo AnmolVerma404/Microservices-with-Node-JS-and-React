@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: comments
-          image: cygnetops/comments-84
+          image: anmolverma404/comments-84
 ---
 apiVersion: v1
 kind: Service

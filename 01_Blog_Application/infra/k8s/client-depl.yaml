@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: cygnetops/client-95
+          image: anmolverma404/client-95
 ---
 apiVersion: v1
 kind: Service
