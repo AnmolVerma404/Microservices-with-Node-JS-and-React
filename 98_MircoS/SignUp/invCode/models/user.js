@@ -47,16 +47,16 @@ const UserSchema = mongoose.Schema({
     type: String,
   },
   roles: {
-    type: String,
+    type: [String],
   },
   social: {
     type: String,
   },
   areaOfExperience: {
-    type: String,
+    type: [String],
   },
   skills: {
-    type: String,
+    type: [String],
   },
   isAccountActive: {
     type: Boolean,

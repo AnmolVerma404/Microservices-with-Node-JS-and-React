@@ -13,6 +13,7 @@ import { skills } from "./routes/skills.js";
 const app = express();
 const PORT = 4002;
 
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(location);

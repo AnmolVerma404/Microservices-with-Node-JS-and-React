@@ -1,6 +1,7 @@
 import express from "express";
-import axios from 'axios';
+import axios from "axios";
 import { user } from "../models/user.js";
+import { userEmail } from "./location.js";
 
 const router = express.Router();
 
@@ -12,12 +13,19 @@ router.get("/signup/personalinfo", (req, res) => {
     );
 });
 
-router.post("/signup/personalinfo", (req, res) => {
+router.post("/signup/personalinfo", async (req, res) => {
   const { username, alternateEmail, mobile, aboutMe } = req.body;
-  //schema.username = username;
-  //schema.alternateEmail = alternateEmail;
-  //schema.mobile = mobile;
-  //schema.aboutMe = aboutMe;
+  const newUser = await user.updateOne(
+    { email: userEmail.email },
+    {
+      $set: {
+        username: username || 'anon',
+        alternateEmail: alternateEmail,
+        mobile: mobile,
+        aboutMe: aboutMe,
+      },
+    }
+  );
   res.status(200).redirect("/signup/interests");
   res.end();
 });

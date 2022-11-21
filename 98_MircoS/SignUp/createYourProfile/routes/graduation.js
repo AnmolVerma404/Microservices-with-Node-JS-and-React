@@ -1,6 +1,7 @@
 import express from "express";
-import axios from 'axios';
+import axios from "axios";
 import { user } from "../models/user.js";
+import { userEmail } from "./location.js";
 
 const router = express.Router();
 
@@ -12,14 +13,19 @@ router.get("/signup/graduation", (req, res) => {
     );
 });
 
-router.post("/signup/graduation", (req, res) => {
+router.post("/signup/graduation", async (req, res) => {
   const { college, graduationYear, degree, major } = req.body;
-  const email = req.query.pstr;
-  console.log(email);
-  //schema.college = college;
-  //schema.graduationYear = graduationYear;
-  //schema.degree = degree;
-  //schema.major = major;
+  const newUser = await user.updateOne(
+    { email: userEmail.email },
+    {
+      $set: {
+        college: college || 'MIT',
+        graduationYear: graduationYear,
+        degree: degree,
+        major: major,
+      },
+    }
+  );
   res.status(200).redirect("/signup/personalinfo");
   res.end();
 });

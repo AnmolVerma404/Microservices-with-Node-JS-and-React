@@ -10,7 +10,7 @@ TODO - Hash Password
 const userInit = {
   //Default for dev purpose
   name: "av",
-  email: "ala@gmail.com",
+  email: "EEEala1710@gmail.com",
   password: "password123",
 };
 
@@ -36,14 +36,7 @@ router.post("/signup", async (req, res) => {
     console.log("Email already Present, try to Signin");
     return res.status(200).redirect("/signup/");
   }
-  const newUser = new user({
-    name: name,
-    email: email,
-    password: password,
-  });
   try {
-    const newUserRes = await newUser.save();
-    console.log(newUserRes);
     if (true) {
       //Check if email and password are valid, also hash the password using Middleware
       // res.send({ name: name, email: email, password: password });

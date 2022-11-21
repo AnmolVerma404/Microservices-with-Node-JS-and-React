@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import { userInit } from "./signUp.js";
+import { user } from "../models/user.js";
 
 const router = express.Router();
 
@@ -17,6 +18,13 @@ router.post("/signup/verifyEmail", async (req, res) => {
   if (true) {
     // Verify the OPT by checking the sent and intered OPT, after this Microservice 1 part is complete
     // store data in some kind of logic then if user close the application he can resume with Microservice 2
+    const newUser = new user({
+      name: userInit.name,
+      email: userInit.email,
+      password: userInit.password,
+    });
+    const newUserRes = await newUser.save();
+    console.log(newUserRes);
     await axios.post("http://localhost:4002/signup/location", {
       email: userInit.email,
     });

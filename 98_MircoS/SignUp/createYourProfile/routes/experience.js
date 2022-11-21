@@ -1,6 +1,7 @@
 import express from "express";
 import axios from 'axios';
 import { user } from "../models/user.js";
+import { userEmail } from "./location.js";
 
 const router = express.Router();
 
@@ -12,9 +13,16 @@ router.get("/signup/experience", (req, res) => {
     );
 });
 
-router.post("/signup/experience", (req, res) => {
+router.post("/signup/experience", async (req, res) => {
   const { areaOfExperience } = req.body;
-  //schema.areaOfExperience = areaOfExperience;
+  const newUser = await user.updateOne(
+    { email: userEmail.email },
+    {
+      $set: {
+        areaOfExperience:areaOfExperience || ['d','e']
+      },
+    }
+  );
   res.status(200).redirect("/signup/skills");
   res.end();
 });

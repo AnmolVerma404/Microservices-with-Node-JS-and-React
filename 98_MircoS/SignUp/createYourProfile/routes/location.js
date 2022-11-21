@@ -1,8 +1,13 @@
 import express, { urlencoded } from "express";
-import axios from 'axios';
+import axios from "axios";
 import { user } from "../models/user.js";
+import emptyEmail from "../services/emptyEmail.js";
 
 const router = express.Router();
+
+const userEmail = {
+  email: "",
+};
 
 router.get("/signup/location", (req, res) => {
   res
@@ -14,9 +19,11 @@ router.get("/signup/location", (req, res) => {
 
 router.post("/signup/location", async (req, res) => {
   const { email, location, timezone } = req.body;
+  userEmail.email = email;
   console.log(email);
+  if (emptyEmail(email)) return;
   const newUser = await user.updateOne(
-    { email: email },
+    { email: userEmail.email },
     {
       $set: {
         location: location || "India",
@@ -25,9 +32,8 @@ router.post("/signup/location", async (req, res) => {
     }
   );
   console.log(newUser);
-  await axios
-  res.status(200).redirect("/signup/graduation/?pstr=" + passString);
+  res.status(200).redirect("/signup/graduation");
   res.end();
 });
 
-export { router as location };
+export { router as location, userEmail };
