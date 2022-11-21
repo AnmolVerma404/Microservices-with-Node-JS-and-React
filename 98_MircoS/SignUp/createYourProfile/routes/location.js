@@ -1,4 +1,5 @@
-import express from "express";
+import express, { urlencoded } from "express";
+import axios from 'axios';
 import { user } from "../models/user.js";
 
 const router = express.Router();
@@ -12,16 +13,20 @@ router.get("/signup/location", (req, res) => {
 });
 
 router.post("/signup/location", async (req, res) => {
-  const { name, email, password,location,timezone} = req.body;
+  const { email, location, timezone } = req.body;
   console.log(email);
-  const newUser = await user.updateOne({ email: email },{
-    $set:{
-      location : location || 'India',
-      timezone : timezone 
-    }}
-    );
+  const newUser = await user.updateOne(
+    { email: email },
+    {
+      $set: {
+        location: location || "India",
+        timezone: timezone,
+      },
+    }
+  );
   console.log(newUser);
-  res.status(200).redirect("/signup/graduation");
+  await axios
+  res.status(200).redirect("/signup/graduation/?pstr=" + passString);
   res.end();
 });
 

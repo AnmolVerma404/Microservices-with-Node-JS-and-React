@@ -18,9 +18,7 @@ router.post("/signup/verifyEmail", async (req, res) => {
     // Verify the OPT by checking the sent and intered OPT, after this Microservice 1 part is complete
     // store data in some kind of logic then if user close the application he can resume with Microservice 2
     await axios.post("http://localhost:4002/signup/location", {
-      name: userInit.name,
       email: userInit.email,
-      password: userInit.password,
     });
     res.redirect("http://localhost:4002/signup/location");
   }

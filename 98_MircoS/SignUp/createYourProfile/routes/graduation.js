@@ -1,4 +1,5 @@
 import express from "express";
+import axios from 'axios';
 import { user } from "../models/user.js";
 
 const router = express.Router();
@@ -13,6 +14,8 @@ router.get("/signup/graduation", (req, res) => {
 
 router.post("/signup/graduation", (req, res) => {
   const { college, graduationYear, degree, major } = req.body;
+  const email = req.query.pstr;
+  console.log(email);
   //schema.college = college;
   //schema.graduationYear = graduationYear;
   //schema.degree = degree;
