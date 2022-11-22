@@ -13,13 +13,11 @@ router.get("/invite-code/", (req, res) => {
 
 router.post("/invite-code/", (req, res) => {
   const { inviteCode } = req.body;
-  console.log('Invite Called');
-  if (true) {
-    //Logic for correct invite code
-    return res.status(200).redirect("/signup");
+  console.log(typeof(inviteCode));
+  if (inviteCode === "123456") {
+    res.send({ isCorrect: true });
   } else {
-    console.log("Nope");
-    res.status(401).send("Invalid Invite Code");
+    res.send({ isCorrect: false });
   }
 });
 
