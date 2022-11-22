@@ -13,11 +13,10 @@ router.get("/invite-code/", (req, res) => {
 
 router.post("/invite-code/", (req, res) => {
   const { inviteCode } = req.body;
-  console.log(typeof(inviteCode));
   if (inviteCode === "123456") {
-    res.send({ isCorrect: true });
+    res.send({ success: true });
   } else {
-    res.send({ isCorrect: false });
+    res.send({ success: false });
   }
 });
 

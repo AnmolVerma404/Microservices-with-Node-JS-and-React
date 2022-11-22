@@ -1,5 +1,4 @@
 import express from "express";
-import axios from "axios";
 import { userInit } from "./signUp.js";
 import { user } from "../models/user.js";
 
@@ -14,21 +13,24 @@ router.get("/signup/verifyEmail", (req, res) => {
 });
 
 router.post("/signup/verifyEmail", async (req, res) => {
-  const { opt } = req.body;
-  if (true) {
+  // Navigate to signup/location
+  const { otp } = req.body;
+  console.log(otp);
+  if (otp == "123456") {
     // Verify the OPT by checking the sent and intered OPT, after this Microservice 1 part is complete
     // store data in some kind of logic then if user close the application he can resume with Microservice 2
-    const newUser = new user({
-      name: userInit.name,
-      email: userInit.email,
-      password: userInit.password,
-    });
-    const newUserRes = await newUser.save();
-    console.log(newUserRes);
-    await axios.post("http://localhost:4002/signup/location", {
-      email: userInit.email,
-    });
-    res.redirect("http://localhost:4002/signup/location");
+    try {
+      const newUser = new user({
+        name: userInit.name,
+        email: userInit.email,
+        password: userInit.password,
+      });
+      const newUserRes = await newUser.save();
+      console.log(newUserRes);
+      res.send({ success: true, message: newUser });
+    } catch (error) {
+      res.send({ success: false, message: error });
+    }
   }
 });
 

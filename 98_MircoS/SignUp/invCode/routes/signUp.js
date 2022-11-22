@@ -3,15 +3,10 @@ import { user } from "../models/user.js";
 
 const router = express.Router();
 
-/*
-TODO - Hash Password
-*/
-
 const userInit = {
-  //Default for dev purpose
-  name: "av",
-  email: "EEEala1710@gmail.com",
-  password: "password123",
+  name: "",
+  email: "",
+  password: "",
 };
 
 router.get("/signup", (req, res) => {
@@ -23,31 +18,31 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  let { name, email, password } = req.body;
-  if (name === undefined) name = userInit.name;
-  else userInit.name = name;
-  if (email === undefined) email = userInit.email;
-  else userInit.email = email;
-  if (password === undefined) password = userInit.password;
-  else userInit.password = password;
+  // Navitate to verifyEmail
+  const { name, email, password } = req.body;
+  //Do a check for above three variable
+  userInit.name = name;
+  userInit.email = email;
+  userInit.password = password;
   console.log(name, email, password);
   const alreadyUsedEmail = await user.findOne({ email: email });
   if (alreadyUsedEmail) {
     console.log("Email already Present, try to Signin");
-    return res.status(200).redirect("/signup/");
+    return res.status(200).send({ message: "Email already in use" });
   }
   try {
     if (true) {
-      //Check if email and password are valid, also hash the password using Middleware
+      //Check if email and password are valid, also  *** hash the password using Middleware ***
+      // Send OPT to email default OPT 123456
       // res.send({ name: name, email: email, password: password });
-      return res.status(200).redirect("/signup/verifyEmail");
+      return res.status(200).send({
+        success: true,
+        message: `OPT sent to ${email.substring(0, 3)}... email`,
+      });
     }
   } catch (error) {
-    res.json({ message: error });
+    res.send({ success: false, message: error });
   }
-  /*
-    Code for sending OPT to user gmail accout
-    */
 });
 
 export { router as signUp, userInit };

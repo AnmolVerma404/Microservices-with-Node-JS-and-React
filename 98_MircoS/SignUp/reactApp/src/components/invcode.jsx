@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Invcode = () => {
   const [inviteCode, setInviteCode] = useState("");
@@ -11,8 +11,8 @@ const Invcode = () => {
       "http://localhost:4001/invite-code",
       { inviteCode }
     );
-    const {isCorrect} = resp.data;
-    if (isCorrect == true) {
+    const {success} = resp.data;
+    if (success == true) {
       setInviteCode("");
       navigate("/signup");
     } else {

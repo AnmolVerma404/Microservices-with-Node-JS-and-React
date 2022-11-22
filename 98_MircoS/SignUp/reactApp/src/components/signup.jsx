@@ -1,16 +1,28 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await axios.post("http://localhost:4001/signup", { name, email, password });
-    setName("");
-    setEmail("");
-    setPassword("");
+    const resp = await axios.post("http://localhost:4001/signup", {
+      name,
+      email,
+      password,
+    });
+    const { success, message } = resp.data;
+    console.log(message);
+    if (success == true) {
+      setName("");
+      setEmail("");
+      setPassword("");
+      navigate("/signup/verifyemail");
+    }
   };
 
   return (
