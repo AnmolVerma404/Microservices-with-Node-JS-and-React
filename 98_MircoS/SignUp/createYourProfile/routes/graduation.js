@@ -15,18 +15,25 @@ router.get("/api/signup/graduation", (req, res) => {
 
 router.post("/api/signup/graduation", async (req, res) => {
   const { college, graduationYear, degree, major } = req.body;
-  const newUser = await user.updateOne(
-    { email: userEmail.email },
-    {
-      $set: {
-        college: college || 'MIT',
-        graduationYear: graduationYear,
-        degree: degree,
-        major: major,
-      },
-    }
-  );
-  res.status(200).redirect("/signup/personalinfo");
+  try {
+    const newUser = await user.updateOne(
+      { email: userEmail.email },
+      {
+        $set: {
+          college: college,
+          graduationYear: graduationYear,
+          degree: degree,
+          major: major,
+        },
+      }
+    );
+    console.log("Graduation", newUser);
+    res
+      .status(200)
+      .send({ success: true, message: "Education set successfully" });
+  } catch (error) {
+    res.send({ success: false, message: error });
+  }
   res.end();
 });
 

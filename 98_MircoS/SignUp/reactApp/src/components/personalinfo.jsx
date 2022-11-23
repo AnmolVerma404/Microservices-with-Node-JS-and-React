@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Graduation = () => {
+const Personalinfo = () => {
   const [college, setCollege] = useState("");
   const [graduationYear, setGraduationYear] = useState("");
   const [degree, setDegree] = useState("");
@@ -22,10 +22,7 @@ const Graduation = () => {
     const { success, message } = resp.data;
     console.log(message);
     if (success == true) {
-      setCollege("");
-      setGraduationYear("");
-      setDegree("");
-      setMajor("");
+    //   setOtp("");
       navigate("/signup/personalinfo");
     }
   };
@@ -56,4 +53,4 @@ const Graduation = () => {
   );
 };
 
-export default Graduation;
+export default Personalinfo;

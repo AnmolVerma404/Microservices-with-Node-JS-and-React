@@ -1,7 +1,5 @@
 import express, { urlencoded } from "express";
-import axios from "axios";
 import { user } from "../models/user.js";
-import emptyEmail from "../services/emptyEmail.js";
 
 const router = express.Router();
 
@@ -22,8 +20,6 @@ router.post("/api/signup/location", async (req, res) => {
   const { email, location, timezone } = req.body;
   userEmail.email = email;
   console.log("Email recived on location api", email);
-  // if (emptyEmail(email)) return;
-  // console.log('E');
   try {
     const newUser = await user.updateOne(
       { email: userEmail.email },
