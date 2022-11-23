@@ -1,5 +1,4 @@
 import express from "express";
-import axios from "axios";
 import { user } from "../models/user.js";
 import { userEmail } from "./location.js";
 
@@ -15,18 +14,26 @@ router.get("/api/signup/personalinfo", (req, res) => {
 
 router.post("/api/signup/personalinfo", async (req, res) => {
   const { username, alternateEmail, mobile, aboutMe } = req.body;
-  const newUser = await user.updateOne(
-    { email: userEmail.email },
-    {
-      $set: {
-        username: username || 'anon',
-        alternateEmail: alternateEmail,
-        mobile: mobile,
-        aboutMe: aboutMe,
-      },
-    }
-  );
-  res.status(200).redirect("/signup/interests");
+  console.log("E",userEmail.email);
+  try {
+    const newUser = await user.updateOne(
+      { email: userEmail.email },
+      {
+        $set: {
+          username: username,
+          alternateEmail: alternateEmail,
+          mobile: mobile,
+          aboutMe: aboutMe,
+        },
+      }
+    );
+    console.log("personalinfo", newUser);
+    res
+      .status(200)
+      .send({ success: true, message: "Personal info set successfully" });
+  } catch (error) {
+    res.send({ success: false, message: error });
+  }
   res.end();
 });
 

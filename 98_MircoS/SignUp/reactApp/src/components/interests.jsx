@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Personalinfo = () => {
+const Interests = () => {
   const [username, setUsername] = useState("");
   const [alternateEmail, setAlternateEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -20,7 +20,7 @@ const Personalinfo = () => {
       }
     );
     const { success, message } = resp.data;
-    console.log(success, message);
+    console.log(message);
     if (success == true) {
       setUsername("");
       setAlternateEmail("");
@@ -32,23 +32,23 @@ const Personalinfo = () => {
   return (
     <div>
       <input
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={college}
+        onChange={(e) => setCollege(e.target.value)}
         placeholder="college"
       ></input>
       <input
-        value={alternateEmail}
-        onChange={(e) => setAlternateEmail(e.target.value)}
+        value={graduationYear}
+        onChange={(e) => setGraduationYear(e.target.value)}
         placeholder="graduationYear"
       ></input>
       <input
-        value={mobile}
-        onChange={(e) => setMobile(e.target.value)}
+        value={degree}
+        onChange={(e) => setDegree(e.target.value)}
         placeholder="degree"
       ></input>
       <input
-        value={aboutMe}
-        onChange={(e) => setAboutMe(e.target.value)}
+        value={major}
+        onChange={(e) => setMajor(e.target.value)}
         placeholder="major"
       ></input>
       <button onClick={checkInput}>Submit</button>
@@ -56,4 +56,4 @@ const Personalinfo = () => {
   );
 };
 
-export default Personalinfo;
+export default Interests;

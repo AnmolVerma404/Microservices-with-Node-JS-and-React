@@ -6,6 +6,7 @@ import VerifyEmail from "./components/verifyEmail";
 import Location from "./components/location";
 import Graduation from "./components/graduation";
 import Personalinfo from "./components/personalinfo";
+import Interests from "./components/interests";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path={"location"} element={<Location />} />
         <Route path={"graduation"} element={<Graduation />} />
         <Route path={"personalinfo"} element={<Personalinfo />} />
+        <Route path={"interests"} element={<Interests />} />
       </Route>
     </Routes>
   );
