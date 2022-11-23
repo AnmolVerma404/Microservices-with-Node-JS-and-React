@@ -8,7 +8,7 @@ const Invcode = () => {
   const checkInput = async (e) => {
     e.preventDefault();
     const resp = await axios.post(
-      "http://localhost:4001/invite-code",
+      "http://localhost:4001/api/invite-code",
       { inviteCode }
     );
     const {success} = resp.data;

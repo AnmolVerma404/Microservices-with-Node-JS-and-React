@@ -2,7 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-router.get("/invite-code/", (req, res) => {
+router.get("/api/invite-code/", (req, res) => {
   console.log("Invite Code page");
   res
     .status(200)
@@ -11,7 +11,7 @@ router.get("/invite-code/", (req, res) => {
     );
 });
 
-router.post("/invite-code/", (req, res) => {
+router.post("/api/invite-code/", (req, res) => {
   const { inviteCode } = req.body;
   if (inviteCode === "123456") {
     res.send({ success: true });

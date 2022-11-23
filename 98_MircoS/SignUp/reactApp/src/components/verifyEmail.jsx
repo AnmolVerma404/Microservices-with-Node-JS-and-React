@@ -7,7 +7,7 @@ const VerifyEmail = () => {
   const navigate = useNavigate();
   const checkInput = async (e) => {
     e.preventDefault();
-    const resp = await axios.post("http://localhost:4001/signup/verifyEmail", {otp});
+    const resp = await axios.post("http://localhost:4001/api/signup/verifyEmail", {otp});
     const {success,message} = resp.data;
     console.log(message);
     if(success == true){

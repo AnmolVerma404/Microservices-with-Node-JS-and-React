@@ -9,7 +9,7 @@ const userInit = {
   password: "",
 };
 
-router.get("/signup", (req, res) => {
+router.get("/api/signup", (req, res) => {
   res
     .status(200)
     .send(
@@ -17,7 +17,7 @@ router.get("/signup", (req, res) => {
     );
 });
 
-router.post("/signup", async (req, res) => {
+router.post("/api/signup", async (req, res) => {
   // Navitate to verifyEmail
   const { name, email, password } = req.body;
   //Do a check for above three variable

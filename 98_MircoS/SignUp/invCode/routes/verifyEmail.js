@@ -4,7 +4,7 @@ import { user } from "../models/user.js";
 
 const router = express.Router();
 
-router.get("/signup/verifyEmail", (req, res) => {
+router.get("/api/signup/verifyEmail", (req, res) => {
   res
     .status(200)
     .send(
@@ -12,7 +12,7 @@ router.get("/signup/verifyEmail", (req, res) => {
     );
 });
 
-router.post("/signup/verifyEmail", async (req, res) => {
+router.post("/api/signup/verifyEmail", async (req, res) => {
   // Navigate to signup/location
   const { otp } = req.body;
   console.log(otp);

@@ -10,7 +10,7 @@ const Signup = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    const resp = await axios.post("http://localhost:4001/signup", {
+    const resp = await axios.post("http://localhost:4001/api/signup", {
       name,
       email,
       password,
