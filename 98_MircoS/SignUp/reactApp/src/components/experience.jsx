@@ -34,7 +34,7 @@ const Experience = () => {
         onChange={(e) => setUnitExperience(e.target.value)}
         placeholder="experience"
       ></input>
-      <button onClick={pushUnitRole}>Add Role</button>
+      <button onClick={pushUnitRole}>Add Experience</button>
       <button onClick={checkInput}>Submit</button>
     </div>
   );

@@ -9,6 +9,7 @@ import Personalinfo from "./components/personalinfo";
 import Interests from "./components/interests";
 import Experience from "./components/experience";
 import Skills from "./components/skills";
+import Dashboard from "./components/dashboard";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path={"experience"} element={<Experience />} />
         <Route path={"skills"} element={<Skills />} />
       </Route>
+      <Route path={"dashboard"} element={<Dashboard />} />
     </Routes>
   );
 }
