@@ -8,6 +8,7 @@ import Graduation from "./components/graduation";
 import Personalinfo from "./components/personalinfo";
 import Interests from "./components/interests";
 import Experience from "./components/experience";
+import Skills from "./components/skills";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path={"interests"} element={<Interests />} />
         <Route path={"personalinfo"} element={<Personalinfo />} />
         <Route path={"experience"} element={<Experience />} />
+        <Route path={"skills"} element={<Skills />} />
       </Route>
     </Routes>
   );

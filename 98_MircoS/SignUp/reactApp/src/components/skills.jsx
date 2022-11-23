@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Experience = () => {
+const Skills = () => {
   const [experience, setExperience] = useState([]);
   const [unitExperience, setUnitExperience] = useState("");
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Experience = () => {
     if (success == true) {
       setExperience([]);
       setUnitExperience("");
-      navigate("/signup/skills");
+      navigate("/dashboard");
     }
   };
   return (
@@ -40,4 +40,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Skills;

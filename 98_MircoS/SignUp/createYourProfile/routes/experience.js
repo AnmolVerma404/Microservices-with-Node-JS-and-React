@@ -1,5 +1,5 @@
 import express from "express";
-import axios from 'axios';
+import axios from "axios";
 import { user } from "../models/user.js";
 import { userEmail } from "./location.js";
 
@@ -15,15 +15,23 @@ router.get("/api/signup/experience", (req, res) => {
 
 router.post("/api/signup/experience", async (req, res) => {
   const { areaOfExperience } = req.body;
-  const newUser = await user.updateOne(
-    { email: userEmail.email },
-    {
-      $set: {
-        areaOfExperience:areaOfExperience || ['d','e']
-      },
-    }
-  );
-  res.status(200).redirect("/signup/skills");
+  console.log("areaOfExperience", areaOfExperience);
+  try {
+    const newUser = await user.updateOne(
+      { email: userEmail.email },
+      {
+        $set: {
+          areaOfExperience: areaOfExperience,
+        },
+      }
+    );
+    console.log("areaOfExperience", newUser);
+    res
+      .status(200)
+      .send({ success: true, message: "Area Of Experience set successfully" });
+  } catch (error) {
+    res.send({ success: false, message: error });
+  }
   res.end();
 });
 
