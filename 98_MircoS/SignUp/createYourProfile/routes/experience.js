@@ -5,7 +5,7 @@ import { userEmail } from "./location.js";
 
 const router = express.Router();
 
-router.get("/signup/experience", (req, res) => {
+router.get("/api/signup/experience", (req, res) => {
   res
     .status(200)
     .send(
@@ -13,7 +13,7 @@ router.get("/signup/experience", (req, res) => {
     );
 });
 
-router.post("/signup/experience", async (req, res) => {
+router.post("/api/signup/experience", async (req, res) => {
   const { areaOfExperience } = req.body;
   const newUser = await user.updateOne(
     { email: userEmail.email },

@@ -9,7 +9,7 @@ const userEmail = {
   email: "",
 };
 
-router.get("/signup/location", (req, res) => {
+router.get("/api/signup/location", (req, res) => {
   res
     .status(200)
     .send(
@@ -17,22 +17,31 @@ router.get("/signup/location", (req, res) => {
     );
 });
 
-router.post("/signup/location", async (req, res) => {
+router.post("/api/signup/location", async (req, res) => {
+  //To graduation
   const { email, location, timezone } = req.body;
   userEmail.email = email;
-  console.log(email);
-  if (emptyEmail(email)) return;
-  const newUser = await user.updateOne(
-    { email: userEmail.email },
-    {
-      $set: {
-        location: location || "India",
-        timezone: timezone,
-      },
-    }
-  );
-  console.log(newUser);
-  res.status(200).redirect("/signup/graduation");
+  console.log("Email recived on location api", email);
+  // if (emptyEmail(email)) return;
+  // console.log('E');
+  try {
+    const newUser = await user.updateOne(
+      { email: userEmail.email },
+      {
+        $set: {
+          location: location,
+          timezone: timezone,
+        },
+      }
+    );
+    console.log(newUser);
+    res.status(200).send({
+      success: true,
+      message: "Location and timezone successfully set",
+    });
+  } catch (error) {
+    res.send({ success: false, message: error });
+  }
   res.end();
 });
 

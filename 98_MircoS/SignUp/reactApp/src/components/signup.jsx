@@ -21,7 +21,7 @@ const Signup = () => {
       setName("");
       setEmail("");
       setPassword("");
-      navigate("/signup/verifyemail");
+      navigate("/signup/verifyemail", { state: { email } });
     }
   };
 

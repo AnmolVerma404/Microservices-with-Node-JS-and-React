@@ -5,7 +5,7 @@ import { user } from "../models/user.js";
 
 const router = express.Router();
 
-router.get("/signup/interests", (req, res) => {
+router.get("/api/signup/interests", (req, res) => {
   res
     .status(200)
     .send(
@@ -13,7 +13,7 @@ router.get("/signup/interests", (req, res) => {
     );
 });
 
-router.post("/signup/interests", async (req, res) => {
+router.post("/api/signup/interests", async (req, res) => {
   const { roles } = req.body;
   const newUser = await user.updateOne(
     { email: userEmail.email },
