@@ -7,6 +7,7 @@ import Location from "./components/location";
 import Graduation from "./components/graduation";
 import Personalinfo from "./components/personalinfo";
 import Interests from "./components/interests";
+import Experience from "./components/experience";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path={"graduation"} element={<Graduation />} />
         <Route path={"personalinfo"} element={<Personalinfo />} />
         <Route path={"interests"} element={<Interests />} />
+        <Route path={"personalinfo"} element={<Personalinfo />} />
+        <Route path={"experience"} element={<Experience />} />
       </Route>
     </Routes>
   );

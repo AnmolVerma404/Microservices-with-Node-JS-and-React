@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Personalinfo = () => {
   const [username, setUsername] = useState("");
   const [alternateEmail, setAlternateEmail] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [mobile, setMobile] = useState(0);
   const [aboutMe, setAboutMe] = useState("");
   const navigate = useNavigate();
   const checkInput = async (e) => {
@@ -34,22 +34,22 @@ const Personalinfo = () => {
       <input
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="college"
+        placeholder="username"
       ></input>
       <input
         value={alternateEmail}
         onChange={(e) => setAlternateEmail(e.target.value)}
-        placeholder="graduationYear"
+        placeholder="alternateEmail"
       ></input>
       <input
         value={mobile}
         onChange={(e) => setMobile(e.target.value)}
-        placeholder="degree"
+        placeholder="mobile"
       ></input>
       <input
         value={aboutMe}
         onChange={(e) => setAboutMe(e.target.value)}
-        placeholder="major"
+        placeholder="aboutMe"
       ></input>
       <button onClick={checkInput}>Submit</button>
     </div>

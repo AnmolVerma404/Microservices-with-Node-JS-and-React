@@ -1,5 +1,5 @@
 import express from "express";
-import axios from 'axios';
+import axios from "axios";
 import { userEmail } from "./location.js";
 import { user } from "../models/user.js";
 
@@ -15,15 +15,20 @@ router.get("/api/signup/interests", (req, res) => {
 
 router.post("/api/signup/interests", async (req, res) => {
   const { roles } = req.body;
-  const newUser = await user.updateOne(
-    { email: userEmail.email },
-    {
-      $set: {
-        roles:roles || ['a','b','c']
-      },
-    }
-  );
-  res.status(200).redirect("/signup/experience");
+  console.log(roles);
+  try {
+    const newUser = await user.updateOne(
+      { email: userEmail.email },
+      {
+        $set: {
+          roles: roles,
+        },
+      }
+    );
+    res.status(200).send({ success: true, message: "Roles Set Successfully" });
+  } catch (error) {
+    res.send({ success: false, message: error });
+  }
   res.end();
 });
 
