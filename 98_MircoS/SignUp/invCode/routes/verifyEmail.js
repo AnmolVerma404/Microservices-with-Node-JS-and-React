@@ -1,6 +1,7 @@
 import express from "express";
 import { userInit } from "./signUp.js";
 import { user } from "../models/user.js";
+import { Otp } from "../models/Otp.js";
 
 const router = express.Router();
 
@@ -16,10 +17,15 @@ router.post("/api/signup/verifyEmail", async (req, res) => {
   // Navigate to signup/location
   const { otp } = req.body;
   console.log(otp);
-  if (otp == "123456") {
+  const userOptVarRecord = await Otp.find({ email: userInit.email });
+  userOptVarRecord.reverse();
+  console.log("OTPs", otp, userOptVarRecord);
+  if(userOptVarRecord.length<=0) res.send({success : false,message : "OPT expired try to send it again"})
+  if (otp == userOptVarRecord[0].otp) {
     // Verify the OPT by checking the sent and intered OPT, after this Microservice 1 part is complete
     // store data in some kind of logic then if user close the application he can resume with Microservice 2
     try {
+      await Otp.deleteMany({ email: userInit.email });
       const newUser = new user({
         name: userInit.name,
         email: userInit.email,
@@ -31,6 +37,8 @@ router.post("/api/signup/verifyEmail", async (req, res) => {
     } catch (error) {
       res.send({ success: false, message: error });
     }
+  } else {
+    res.send({ success: false, message: "Invalid OPT" });
   }
 });
 

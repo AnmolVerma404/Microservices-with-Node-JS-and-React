@@ -1,5 +1,6 @@
 import express from "express";
 import { user } from "../models/user.js";
+import { Otp } from "../models/Otp.js";
 import nodemailer from "nodemailer";
 
 const router = express.Router();
@@ -29,12 +30,20 @@ const otpVerification = async (email) => {
       <p>${otp}</p>
       `,
     };
+    const newOtp = await new Otp({
+      email: email,
+      otp: otp,
+      createdAt: Date.now(),
+      expiresAt: Date.now() + 3600000,
+    });
+    const newOtpRes = await newOtp.save();
+    console.log(newOtpRes);
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(error);
       } else {
         console.log("Email sent: " + info.response);
-        return otp;
+        return Otp;
       }
     });
   } catch (error) {

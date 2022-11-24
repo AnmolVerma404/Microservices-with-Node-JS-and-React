@@ -1,12 +1,10 @@
 import mongoose from "mongoose";
 
-const otpSchema = new mongoose.Schema({
-  userId: String,
+const otpSchema = mongoose.Schema({
+  email: String,
   otp: String,
   createdAt: Date,
   expiresAt: Date,
 });
 
-const opt = mongoose.Model("opt", otpSchema);
-
-export default opt;
+export const Otp = mongoose.model("opt", otpSchema);
