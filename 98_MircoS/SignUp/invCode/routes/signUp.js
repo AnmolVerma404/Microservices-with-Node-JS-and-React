@@ -1,5 +1,6 @@
 import express from "express";
 import { user } from "../models/user.js";
+import nodemailer from "nodemailer";
 
 const router = express.Router();
 
@@ -7,6 +8,38 @@ const userInit = {
   name: "",
   email: "",
   password: "",
+};
+
+const otpVerification = async (email) => {
+  try {
+    const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "anmolverma102002@gmail.com",
+        pass: process.env.EMAILPASSWORD,
+      },
+    });
+    var mailOptions = {
+      from: "anmolverma102002@gmail.com",
+      to: email,
+      subject: "OTP for SignUP",
+      html: `
+      <h1>OTP is</h1>
+      <p>${otp}</p>
+      `,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+        return otp;
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 router.get("/api/signup", (req, res) => {
@@ -35,6 +68,7 @@ router.post("/api/signup", async (req, res) => {
       //Check if email and password are valid, also  *** hash the password using Middleware ***
       // Send OPT to email default OPT 123456
       // res.send({ name: name, email: email, password: password });
+      const corrOTP = otpVerification(email);
       return res.status(200).send({
         success: true,
         message: `OPT sent to ${email.substring(0, 3)}... email`,
