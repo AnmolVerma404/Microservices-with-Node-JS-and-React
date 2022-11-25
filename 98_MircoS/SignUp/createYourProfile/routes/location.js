@@ -15,6 +15,15 @@ router.get("/api/signup/location", (req, res) => {
     );
 });
 
+router.post("/api/signup/location/prevstorage", (req, res) => {
+  const { email } = req.body;
+  console.log("Location get email", email);
+  try {
+  } catch (error) {}
+  res.send({ success: true, message: `Email is ${email}` });
+  res.end();
+});
+
 router.post("/api/signup/location", async (req, res) => {
   //To graduation
   const { email, location, timezone } = req.body;

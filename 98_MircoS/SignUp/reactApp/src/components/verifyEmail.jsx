@@ -12,6 +12,10 @@ const VerifyEmail = () => {
       "http://localhost:4001/api/signup/verifyEmail",
       { otp }
     );
+    const respStored = await axios.post(
+      "http://localhost:4002/api/signup/location/prevstorage",
+      { email: location.state.email }
+    );
     const { success, message } = resp.data;
     console.log(message);
     if (success == true) {
