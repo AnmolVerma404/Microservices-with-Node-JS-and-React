@@ -2,6 +2,7 @@ import express from "express";
 import { user } from "../models/user.js";
 import { Otp } from "../models/Otp.js";
 import nodemailer from "nodemailer";
+import bcrypt from "bcryptjs";
 
 const router = express.Router();
 
@@ -65,8 +66,13 @@ router.post("/api/signup", async (req, res) => {
   //Do a check for above three variable
   userInit.name = name;
   userInit.email = email;
-  userInit.password = password;
-  console.log(name, email, password);
+
+  //Password hashing
+  const salt = await bcrypt.genSalt(10);
+  const secPass = await bcrypt.hash(password, salt);
+  userInit.password = secPass;
+  console.log(name, email, secPass);
+
   const alreadyUsedEmail = await user.findOne({ email: email });
   if (alreadyUsedEmail) {
     console.log("Email already Present, try to Signin");
@@ -76,7 +82,6 @@ router.post("/api/signup", async (req, res) => {
     if (true) {
       //Check if email and password are valid, also  *** hash the password using Middleware ***
       // Send OPT to email default OPT 123456
-      // res.send({ name: name, email: email, password: password });
       const corrOTP = otpVerification(email);
       return res.status(200).send({
         success: true,
