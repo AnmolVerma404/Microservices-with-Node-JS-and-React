@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import "dotenv/config";
-import { inviteCode } from "./routes/inviteCode.js";
-import { signUp, userInit } from "./routes/signUp.js";
-import { verifyEmail } from "./routes/verifyEmail.js";
+import { inviteCode } from "./routes/inviteCode";
+import { signUp } from "./routes/signUp";
+import { verifyEmail } from "./routes/verifyEmail";
 
 
 const app = express();

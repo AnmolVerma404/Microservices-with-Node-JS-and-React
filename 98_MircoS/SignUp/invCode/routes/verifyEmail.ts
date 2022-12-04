@@ -1,5 +1,5 @@
 import express from "express";
-import { userInit } from "./signUp.js";
+import { userInit } from "./signUp";
 import { user } from "../models/user.js";
 import { Otp } from "../models/Otp.js";
 
@@ -15,7 +15,7 @@ router.get("/api/signup/verifyEmail", (req, res) => {
 
 router.post("/api/signup/verifyEmail", async (req, res) => {
   // Navigate to signup/location
-  const { otp } = req.body;
+  const { otp } : {otp : string} = req.body;
   console.log(otp);
   const userOptVarRecord = await Otp.find({ email: userInit.email });
   userOptVarRecord.reverse();

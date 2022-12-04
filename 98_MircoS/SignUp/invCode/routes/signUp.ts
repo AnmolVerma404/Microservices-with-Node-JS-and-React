@@ -12,7 +12,7 @@ const userInit = {
   password: "",
 };
 
-const otpVerification = async (email) => {
+const otpVerification = async (email: string) => {
   try {
     // *** This will give a 4 digit OTP code ***
     const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
@@ -63,7 +63,7 @@ router.get("/api/signup", (req, res) => {
 
 router.post("/api/signup", async (req, res) => {
   // Navitate to verifyEmail
-  const { name, email, password } = req.body;
+  const { name, email, password } : {name : string,email : string, password : string} = req.body;
   //Do a check for above three variable
   userInit.name = name;
   userInit.email = email;
