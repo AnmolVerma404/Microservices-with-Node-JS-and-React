@@ -13,6 +13,10 @@ router.get("/api/invite-code/", (req, res) => {
 
 router.post("/api/invite-code/", (req, res) => {
   const { inviteCode } = req.body;
+  /*
+  *** Invite Code Logic remains ***
+  *** Currenty used a const 123456 as a default invite code ***
+  */
   if (inviteCode === "123456") {
     res.send({ success: true });
   } else {

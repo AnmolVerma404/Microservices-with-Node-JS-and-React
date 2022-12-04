@@ -20,7 +20,8 @@ router.post("/api/signup/verifyEmail", async (req, res) => {
   const userOptVarRecord = await Otp.find({ email: userInit.email });
   userOptVarRecord.reverse();
   console.log("OTPs", otp, userOptVarRecord);
-  if(userOptVarRecord.length<=0) res.send({success : false,message : "OPT expired try to send it again"})
+  if (userOptVarRecord.length <= 0)
+    res.send({ success: false, message: "OPT expired try to send it again" });
   //Also check if OTP is expired
   if (otp == userOptVarRecord[0].otp) {
     // Verify the OPT by checking the sent and intered OPT, after this Microservice 1 part is complete
