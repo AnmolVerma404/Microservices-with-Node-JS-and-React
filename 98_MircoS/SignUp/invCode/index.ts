@@ -7,10 +7,8 @@ import { inviteCode } from "./routes/inviteCode";
 import { signUp } from "./routes/signUp";
 import { verifyEmail } from "./routes/verifyEmail";
 
-
 const app = express();
 const PORT = 4001;
-
 app.use(bodyParser.json());
 app.use(cors());
 app.use(inviteCode);
