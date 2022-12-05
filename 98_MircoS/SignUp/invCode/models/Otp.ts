@@ -1,22 +1,37 @@
 import mongoose from "mongoose";
 
 /**
- * @OtpAtters define how the OTP schema looks
+ * @var @OtpAtters define how the OTP schema looks
  * What are the types of value otpSchema accept
  */
 interface OtpAtters {
   email: string;
   otp: string;
-  createdAt: Date;
-  expiresAt: Date;
+  createdAt: number;
+  expiresAt: number;
 }
 
 /**
  * @OtpModel will basically tell TS that we have a @build function
  * That @build function accept @OtpAtters
+ * At the place of @OtpDocs prev it was any
+ * But now we have defination for how should a OtpSchema look like in TS Node files
+ * In simple word after creating an instance of Otp, we can access OtpInstance.email || otp || ..etc
  */
-interface OtpModel extends mongoose.Model<any> {
-  build(attrs: OtpAtters): any;
+interface OtpModel extends mongoose.Model<OtpDocs> {
+  build(attrs: OtpAtters): OtpDocs;
+}
+
+/**
+ * @OtpDocs will help files like signUp.ts using type checking and key checking
+ * If we include any other ket which is not defined in OtpDocs it will show error
+ * @New items will be added in @OtpDocs then only they can used in TS node files
+ */
+interface OtpDocs extends mongoose.Document {
+  email: string;
+  otp: string;
+  createdAt: number;
+  expiresAt: number;
 }
 
 /**
@@ -25,8 +40,8 @@ interface OtpModel extends mongoose.Model<any> {
 const otpSchema = new mongoose.Schema({
   email: String,
   otp: String,
-  createdAt: Date,
-  expiresAt: Date,
+  createdAt: Number,
+  expiresAt: Number,
 });
 
 /**
@@ -40,7 +55,21 @@ otpSchema.statics.build = (attrs: OtpAtters) => {
 /**
  * @Otp is a node to connect the instance of @otpSchema to @opt schema in mongoDB cluster
  * <any,OtpModel> tells model to give @Otp the ability to call @build function/method
+ * Previously was <any,OtpModel> now it is <OtpDocs, OtpModel>
+ * The reason is any->OtpDocs, where @OtpDocs is a kind of docs about how the OtpSchema will look like
+ * Previously it was on any instance now it also have defination which should be strictly followed
  */
-const Otp = mongoose.model<any, OtpModel>("otp", otpSchema);
+const Otp = mongoose.model<OtpDocs, OtpModel>("otp", otpSchema);
+
+/**
+ * Below is the temp code @userO of how building a Otp instence would look like
+ */
+// const userO = Otp.build({
+//   email:"",
+//   otp:"",
+//   createdAt: new number,
+//   expiresAt: new number,
+// })
+// userO.email || userO.otp || ......
 
 export { Otp };

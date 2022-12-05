@@ -1,6 +1,6 @@
 import express from "express";
 import { user } from "../models/user.js";
-import { Otp } from "../models/Otp.js";
+import { Otp } from "../models/Otp";
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";
 
@@ -32,11 +32,11 @@ const otpVerification = async (email: string) => {
       <p>${otp}</p>
       `,
     };
-    const newOtp = await new Otp({
+    const newOtp = Otp.build({
       email: email,
       otp: otp,
       createdAt: Date.now(),
-      expiresAt: Date.now() + 3600000,
+      expiresAt: Date.now() + 600000,//Code expires in 10 minutes
     });
     const newOtpRes = await newOtp.save();
     console.log(newOtpRes);

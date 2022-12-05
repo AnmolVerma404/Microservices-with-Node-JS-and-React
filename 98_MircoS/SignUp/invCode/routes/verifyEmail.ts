@@ -1,7 +1,7 @@
 import express from "express";
 import { userInit } from "./signUp";
 import { user } from "../models/user.js";
-import { Otp } from "../models/Otp.js";
+import { Otp } from "../models/Otp";
 
 const router = express.Router();
 
@@ -17,13 +17,17 @@ router.post("/api/signup/verifyEmail", async (req, res) => {
   // Navigate to signup/location
   const { otp } : {otp : string} = req.body;
   console.log(otp);
+  const currTime = Date.now();
   const userOptVarRecord = await Otp.find({ email: userInit.email });
   userOptVarRecord.reverse();
   console.log("OTPs", otp, userOptVarRecord);
-  if (userOptVarRecord.length <= 0)
+  if (userOptVarRecord.length <= 0){
     res.send({ success: false, message: "OPT expired try to send it again" });
-  //Also check if OTP is expired
-  if (otp == userOptVarRecord[0].otp) {
+  }
+  else if(currTime>userOptVarRecord[0].expiresAt){//Also check if OTP is expired
+    res.send({ success: false, message: "OPT expired try to send it again" });
+  }
+  else if (otp == userOptVarRecord[0].otp) {
     // Verify the OPT by checking the sent and intered OPT, after this Microservice 1 part is complete
     // store data in some kind of logic then if user close the application he can resume with Microservice 2
     try {
