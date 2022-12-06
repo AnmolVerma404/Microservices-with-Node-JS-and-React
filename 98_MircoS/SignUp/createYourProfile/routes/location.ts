@@ -1,5 +1,5 @@
-import express, { urlencoded } from "express";
-import { user } from "../models/user.js";
+import express from "express";
+import { user } from "../models/user";
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.get("/api/signup/location", (req, res) => {
 });
 
 router.post("/api/signup/location/prevstorage", (req, res) => {
-  const { email } = req.body;
+  const { email } : {email : string} = req.body;
   console.log("Location get email", email);
   try {
   } catch (error) {}
@@ -26,7 +26,7 @@ router.post("/api/signup/location/prevstorage", (req, res) => {
 
 router.post("/api/signup/location", async (req, res) => {
   //To graduation
-  const { email, location, timezone } = req.body;
+  const { email, location, timezone } : { email : string, location : string, timezone : string } = req.body;
   userEmail.email = email;
   console.log("Email recived on location api", email);
   try {

@@ -3,12 +3,12 @@ import cors from "cors";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import "dotenv/config";
-import { location } from "./routes/location.js";
-import { graduation } from "./routes/graduation.js";
-import { personalinfo } from "./routes/personalinfo.js";
-import { interests } from "./routes/interests.js";
-import { experience } from "./routes/experience.js";
-import { skills } from "./routes/skills.js";
+import { location } from "./routes/location";
+import { graduation } from "./routes/graduation";
+import { personalinfo } from "./routes/personalinfo";
+import { interests } from "./routes/interests";
+import { experience } from "./routes/experience";
+import { skills } from "./routes/skills";
 
 const app = express();
 const PORT = 4002;
@@ -24,7 +24,7 @@ app.use(experience);
 app.use(skills);
 
 mongoose
-  .connect(process.env.DB_CONNECTION)
+  .connect((process.env.DB_CONNECTION as string))
   .then(() => console.log("Database connected!"))
   .catch((err) => console.log(err));
 

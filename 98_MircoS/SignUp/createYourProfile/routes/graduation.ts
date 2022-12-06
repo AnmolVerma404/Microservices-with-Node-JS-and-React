@@ -1,7 +1,6 @@
 import express from "express";
-import axios from "axios";
-import { user } from "../models/user.js";
-import { userEmail } from "./location.js";
+import { user } from "../models/user";
+import { userEmail } from "./location";
 
 const router = express.Router();
 
@@ -14,7 +13,12 @@ router.get("/api/signup/graduation", (req, res) => {
 });
 
 router.post("/api/signup/graduation", async (req, res) => {
-  const { college, graduationYear, degree, major } = req.body;
+  const { college, graduationYear, degree, major } : {
+    college : string, 
+    graduationYear : string, 
+    degree : string, 
+    major : string
+  } = req.body;
   try {
     const newUser = await user.updateOne(
       { email: userEmail.email },

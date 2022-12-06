@@ -1,7 +1,6 @@
 import express from "express";
-import axios from "axios";
-import { userEmail } from "./location.js";
-import { user } from "../models/user.js";
+import { userEmail } from "./location";
+import { user } from "../models/user";
 
 const router = express.Router();
 
@@ -14,7 +13,7 @@ router.get("/api/signup/interests", (req, res) => {
 });
 
 router.post("/api/signup/interests", async (req, res) => {
-  const { roles } = req.body;
+  const { roles } : {roles: [string]} = req.body;
   console.log(roles);
   try {
     const newUser = await user.updateOne(
