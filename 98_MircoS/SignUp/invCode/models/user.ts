@@ -1,22 +1,69 @@
 import mongoose from "mongoose";
 
 /**
- * @OtpAtters define how the OTP schema looks
+ * @var @UserAtters define how the User schema looks
  * What are the types of value UserSchema accept
  */
-interface OtpAtters {
-  email: string;
-  otp: string;
-  createdAt: Date;
-  expiresAt: Date;
+interface UserAtters {
+  name: String;
+  email: String;
+  password: String;
+  location: String;
+  timezone: String;
+  college: String;
+  graduationYear: String;
+  degree: String;
+  major: String;
+  username: String;
+  alternateEmail: String;
+  mobile: Number;
+  aboutMe: String;
+  alternateMobile: String;
+  roles: [String];
+  social: String;
+  areaOfExperience: [String];
+  skills: [String];
+  isAccountActive: Boolean;
+  referredBy: String;
 }
 
 /**
- * @OtpModel will basically tell TS that we have a @build function
- * That @build function accept @OtpAtters
+ * @UserModel will basically tell TS that we have a @build function
+ * That @build function accept @UserAtters
+ * At the place of @UserDocs prev it was any
+ * But now we have defination for how should a UserSchema look like in TS Node files
+ * In simple word after creating an instance of user, we can access UserInstance.email || username || ..etc
  */
-interface OtpModel extends mongoose.Model<any> {
-  build(attrs: OtpAtters): any;
+interface UserModel extends mongoose.Model<UserDocs> {
+  build(attrs: UserAtters): UserDocs;
+}
+
+/**
+ * @UserDocs will help files like signUp.ts using type checking and key checking
+ * If we include any other ket which is not defined in UserDocs it will show error
+ * @New items will be added in @UserDocs then only they can used in TS node files
+ */
+interface UserDocs extends mongoose.Document {
+  name: String;
+  email: String;
+  password: String;
+  location: String;
+  timezone: String;
+  college: String;
+  graduationYear: String;
+  degree: String;
+  major: String;
+  username: String;
+  alternateEmail: String;
+  mobile: Number;
+  aboutMe: String;
+  alternateMobile: String;
+  roles: [String];
+  social: String;
+  areaOfExperience: [String];
+  skills: [String];
+  isAccountActive: Boolean;
+  referredBy: String;
 }
 
 /**
@@ -89,17 +136,20 @@ const UserSchema = new mongoose.Schema({
 });
 
 /**
- * We are using this to make a @build function which will be accessible with @Otp variable.
+ * We are using this to make a @build function which will be accessible with @user variable.
  * But still TS dosen't knows that any build function is present
  */
-UserSchema.statics.build = (attrs: OtpAtters) => {
-  return new Otp(attrs);
+UserSchema.statics.build = (attrs: UserAtters) => {
+  return new user(attrs);
 };
 
 /**
- * @Otp is a node to connect the instance of @UserSchema to @opt schema in mongoDB cluster
- * <any,OtpModel> tells model to give @Otp the ability to call @build function/method
+ * @user is a node to connect the instance of @UserSchema to @user schema in mongoDB cluster
+ * <any,UserModel> tells model to give @user the ability to call @build function/method
+ * Previously was <any,UserModel> now it is <UserDocs, UserModel>
+ * The reason is any->UserDocs, where @UserDocs is a kind of docs about how the UserSchema will look like
+ * Previously it was on any instance now it also have defination which should be strictly followed
  */
-const user = mongoose.model<any, OtpModel>("User", UserSchema);
+const user = mongoose.model<UserDocs, UserModel>("User", UserSchema);
 
 export { user };

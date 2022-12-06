@@ -1,5 +1,5 @@
 import express from "express";
-import { user } from "../models/user.js";
+import { user } from "../models/user";
 import { Otp } from "../models/Otp";
 import nodemailer from "nodemailer";
 import bcrypt from "bcryptjs";

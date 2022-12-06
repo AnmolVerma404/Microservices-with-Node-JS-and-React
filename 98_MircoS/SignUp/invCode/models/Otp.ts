@@ -53,7 +53,7 @@ otpSchema.statics.build = (attrs: OtpAtters) => {
 };
 
 /**
- * @Otp is a node to connect the instance of @otpSchema to @opt schema in mongoDB cluster
+ * @Otp is a node to connect the instance of @otpSchema to @otp schema in mongoDB cluster
  * <any,OtpModel> tells model to give @Otp the ability to call @build function/method
  * Previously was <any,OtpModel> now it is <OtpDocs, OtpModel>
  * The reason is any->OtpDocs, where @OtpDocs is a kind of docs about how the OtpSchema will look like

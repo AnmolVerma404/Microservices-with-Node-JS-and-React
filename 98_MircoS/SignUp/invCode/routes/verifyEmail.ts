@@ -1,6 +1,6 @@
 import express from "express";
 import { userInit } from "./signUp";
-import { user } from "../models/user.js";
+import { user } from "../models/user";
 import { Otp } from "../models/Otp";
 
 const router = express.Router();
