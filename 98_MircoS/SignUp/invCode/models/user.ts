@@ -1,30 +1,30 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 /**
  * @var @UserAtters define how the User schema looks
  * What are the types of value UserSchema accept
  */
 interface UserAtters {
-  name: string;
-  email: string;
-  password: string;
-  location: string;
-  timezone: string;
-  college: string;
-  graduationYear: string;
-  degree: string;
-  major: string;
-  username: string;
-  alternateEmail: string;
-  mobile: number;
-  aboutMe: string;
-  alternateMobile: string;
-  roles: [string];
-  social: string;
-  areaOfExperience: [string];
-  skills: [string];
-  isAccountActive: Boolean;
-  referredBy: string;
+	name: string;
+	email: string;
+	password: string;
+	location: string;
+	timezone: string;
+	college: string;
+	graduationYear: string;
+	degree: string;
+	major: string;
+	username: string;
+	alternateEmail: string;
+	mobile: number;
+	aboutMe: string;
+	alternateMobile: string;
+	roles: [string];
+	social: string;
+	areaOfExperience: [string];
+	skills: [string];
+	isAccountActive: Boolean;
+	referredBy: string;
 }
 
 /**
@@ -35,7 +35,7 @@ interface UserAtters {
  * In simple word after creating an instance of user, we can access UserInstance.email || username || ..etc
  */
 interface UserModel extends mongoose.Model<UserDocs> {
-  build(attrs: UserAtters): UserDocs;
+	build(attrs: UserAtters): UserDocs;
 }
 
 /**
@@ -44,103 +44,115 @@ interface UserModel extends mongoose.Model<UserDocs> {
  * @New items will be added in @UserDocs then only they can used in TS node files
  */
 interface UserDocs extends mongoose.Document {
-  name: string;
-  email: string;
-  password: string;
-  location: string;
-  timezone: string;
-  college: string;
-  graduationYear: string;
-  degree: string;
-  major: string;
-  username: string;
-  alternateEmail: string;
-  mobile: number;
-  aboutMe: string;
-  alternateMobile: string;
-  roles: [string];
-  social: string;
-  areaOfExperience: [string];
-  skills: [string];
-  isAccountActive: Boolean;
-  referredBy: string;
+	name: string;
+	email: string;
+	password: string;
+	location: string;
+	timezone: string;
+	college: string;
+	graduationYear: string;
+	degree: string;
+	major: string;
+	username: string;
+	alternateEmail: string;
+	mobile: number;
+	aboutMe: string;
+	alternateMobile: string;
+	roles: [string];
+	social: string;
+	areaOfExperience: [string];
+	skills: [string];
+	isAccountActive: Boolean;
+	referredBy: string;
 }
 
 /**
  * mongoose.Schema will create a schema for mongoose and store the instance of it in @UserSchema
  */
-const UserSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    require: true,
-  },
-  email: {
-    type: String,
-    require: true,
-  },
-  password: {
-    type: String,
-    require: true,
-  },
-  location: {
-    type: String,
-  },
-  timezone: {
-    type: String,
-  },
-  college: {
-    type: String,
-  },
-  graduationYear: {
-    type: String,
-  },
-  degree: {
-    type: String,
-  },
-  major: {
-    type: String,
-  },
-  username: {
-    type: String,
-  },
-  alternateEmail: {
-    type: String,
-  },
-  mobile: {
-    type: Number,
-  },
-  aboutMe: {
-    type: String,
-  },
-  alternateMobile: {
-    type: String,
-  },
-  roles: {
-    type: [String],
-  },
-  social: {
-    type: String,
-  },
-  areaOfExperience: {
-    type: [String],
-  },
-  skills: {
-    type: [String],
-  },
-  isAccountActive: {
-    type: Boolean,
-  },
-  referredBy: {
-    type: String,
-  },
-});
+const UserSchema = new mongoose.Schema(
+	{
+		name: {
+			type: String,
+			require: true,
+		},
+		email: {
+			type: String,
+			require: true,
+		},
+		password: {
+			type: String,
+			require: true,
+		},
+		location: {
+			type: String,
+		},
+		timezone: {
+			type: String,
+		},
+		college: {
+			type: String,
+		},
+		graduationYear: {
+			type: String,
+		},
+		degree: {
+			type: String,
+		},
+		major: {
+			type: String,
+		},
+		username: {
+			type: String,
+		},
+		alternateEmail: {
+			type: String,
+		},
+		mobile: {
+			type: Number,
+		},
+		aboutMe: {
+			type: String,
+		},
+		alternateMobile: {
+			type: String,
+		},
+		roles: {
+			type: [String],
+		},
+		social: {
+			type: String,
+		},
+		areaOfExperience: {
+			type: [String],
+		},
+		skills: {
+			type: [String],
+		},
+		isAccountActive: {
+			type: Boolean,
+		},
+		referredBy: {
+			type: String,
+		},
+	},
+	{
+		toJSON: {
+			//This does not change _id to id in database
+			transform(doc, ret) {
+				ret.id = ret._id;
+				delete ret._id;
+				delete ret.__v;
+			},
+		},
+	}
+);
 
 /**
  * We are using this to make a @build function which will be accessible with @user variable.
  * But still TS dosen't knows that any build function is present
  */
 UserSchema.statics.build = (attrs: UserAtters) => {
-  return new user(attrs);
+	return new user(attrs);
 };
 
 /**
@@ -150,6 +162,6 @@ UserSchema.statics.build = (attrs: UserAtters) => {
  * The reason is any->UserDocs, where @UserDocs is a kind of docs about how the UserSchema will look like
  * Previously it was on any instance now it also have defination which should be strictly followed
  */
-const user = mongoose.model<UserDocs, UserModel>("User", UserSchema);
+const user = mongoose.model<UserDocs, UserModel>('User', UserSchema);
 
 export { user };
