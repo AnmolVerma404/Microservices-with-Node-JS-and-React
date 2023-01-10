@@ -14,7 +14,7 @@ const data = {
 };
 
 app.get("/posttext", (req, res) => {
-  res.send("This is Post Text Service!!!");
+  res.send("This is Post Text Service!!! Ayo Skaffold working");
 });
 
 app.post("/posttext",  (req, res) => {
